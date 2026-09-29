@@ -51,7 +51,51 @@ namespace Rockk
                 Console.WriteLine($"Computer chose: {computerChoice}");
 
                 // --- decide the winner ---
-                
+                if (playerChoice == computerChoice)
+                {
+                    Console.WriteLine("It's a tie!");
+                }
+                else if (
+                    (playerChoice == "rock" && computerChoice == "scissors") ||
+                    (playerChoice == "paper" && computerChoice == "rock") ||
+                    (playerChoice == "scissors" && computerChoice == "paper")
+                )
+                {
+                    Console.WriteLine("You win this round!");
+                    playerScore++;
+                }
+                else
+                {
+                    Console.WriteLine("Computer wins this round!");
+                    computerScore++;
+                }
+
+                Console.WriteLine($"Score -> You: {playerScore} | Computer: {computerScore}");
+
+                // --- play again? ---
+                Console.Write("\nPlay another round? (y/n): ");
+                string? answer = Console.ReadLine();
+                playAgain = answer != null && answer.Trim().ToLower() == "y";
+            }
+
+            Console.WriteLine("\n=== Final Score ===");
+            Console.WriteLine($"You: {playerScore} | Computer: {computerScore}");
+
+            if (playerScore > computerScore)
+            {
+                Console.WriteLine("You won overall! 🎉");
+            }
+            else if (computerScore > playerScore)
+            {
+                Console.WriteLine("Computer won overall. Better luck next time!");
+            }
+            else
+            {
+                Console.WriteLine("Overall it's a tie!");
+            }
+
+            Console.WriteLine("\nThanks for playing! Goodbye.");
+
 
         }
     }
